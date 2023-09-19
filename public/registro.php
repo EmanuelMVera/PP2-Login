@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkQuery = "SELECT usuario FROM login WHERE usuario = '$usuario'";
     $checkResult = mysqli_query($conn, $checkQuery);
 
-    if (mysqli_num_rows($checkResult) > 0) {
+    if ($checkResult && mysqli_num_rows($checkResult) > 0) {
         echo "El nombre de usuario ya está en uso. Por favor, elige otro.";
     } else {
         // Hash de la contraseña
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($insertResult) {
             // Registro exitoso, redirige al usuario a la página de inicio de sesión
-            header("Location: index.html");
+            header("Location: index.php");
             exit();
         } else {
             echo "Error al registrar el usuario.";
