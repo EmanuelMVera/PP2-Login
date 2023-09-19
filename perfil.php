@@ -52,14 +52,13 @@ if (isset($_SESSION["nombreUsuario"])) {
     }
 } else {
     // Los datos del usuario no están en la sesión, redirige al inicio de sesión
-    header("Location: index.php");
+    header("Location: ./index.php");
     exit();
 }
 
-include("usuario.html"); // Incluye la página HTML de usuario
 ?>
 
-<?php include('../templates/header.php'); ?>
+<?php include('./templates/header.php'); ?>
 <div class="usuario-container">
     <div class="perfil">
         <img src="avatar.png" alt="Foto de perfil">
@@ -83,4 +82,4 @@ include("usuario.html"); // Incluye la página HTML de usuario
         </form>
     </div>
 </div>
-<?php include('../templates/footer.php'); ?>
+<?php include('./templates/footer.php'); ?>

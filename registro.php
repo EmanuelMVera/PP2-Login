@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<?php include('../templates/header.php'); ?>
+<?php include('./templates/header.php'); ?>
 <div class="registro-container">
     <h2>Crear usuario</h2>
     <form action="registro.php" method="POST">
@@ -38,6 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="password" name="contrasena" placeholder="Nueva Contraseña" required /><br />
         <button type="submit">Registrarse</button>
     </form>
-    <a href="index.html">Volver al inicio de sesión</a>
+    <a href="./index.php">Volver al inicio de sesión</a>
 </div>
-<?php include('../templates/footer.php'); ?>
+<?php include('./templates/footer.php'); ?>

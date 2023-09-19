@@ -1,9 +1,10 @@
 <?php
-include_once("includes/database.php");
+include_once("./database.php");
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = mysqli_real_escape_string($conn, $_POST["usuario"]);
-    $contrasena = $_POST["contrasena"];
+    $usuario = mysqli_real_escape_string($conn, trim($_POST["usuario"])); // Aplicamos trim() al nombre de usuario
+    $contrasena = trim($_POST["contrasena"]); // Aplicamos trim() a la contraseña
 
     // Verificar si el usuario y la contraseña existen en la base de datos
     $query = "SELECT * FROM login WHERE usuario = '$usuario'";
@@ -12,17 +13,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result && mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
         if (password_verify($contrasena, $row['password'])) {
-            // Inicia la sesión y guarda los datos del usuario en la sesión
-            session_start();
-
+            // Guarda los datos del usuario en la sesión
             $_SESSION["nombreUsuario"] = $row['nombre'];
             $_SESSION["correoUsuario"] = $row['correo'];
             $_SESSION["fechaNacimiento"] = $row['fecha_nacimiento'];
             $_SESSION["ciudad"] = $row['ciudad'];
             $_SESSION["pais"] = $row['pais'];
 
-            // Redirige a usuario.php
-            header("Location: usuario.php");
+            // Redirige a perfil.php
+            header("Location: ../perfil.php");
             exit();
         } else {
             echo "Usuario o contraseña incorrectos.";
@@ -33,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-
 <?php include('../templates/header.php'); ?>
 <div class="content">
     <div class="main-container">
@@ -43,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" name="contrasena" placeholder="Contraseña" required /><br />
             <button type="submit">Ingresar</button>
         </form>
-        <a href="registro.html">Crear usuario</a>
+        <a href="../registro.php">Crear usuario</a>
     </div>
 </div>
 <?php include('../templates/footer.php'); ?>
