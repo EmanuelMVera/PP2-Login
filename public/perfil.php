@@ -58,3 +58,29 @@ if (isset($_SESSION["nombreUsuario"])) {
 
 include("usuario.html"); // Incluye la página HTML de usuario
 ?>
+
+<?php include('../templates/header.php'); ?>
+<div class="usuario-container">
+    <div class="perfil">
+        <img src="avatar.png" alt="Foto de perfil">
+        <h2>
+            <?php echo $nombreUsuario; ?>
+        </h2>
+        <p>Correo Electrónico:
+            <?php echo $correoUsuario; ?>
+        </p>
+        <p>Fecha de Nacimiento:
+            <?php echo $fechaNacimiento; ?>
+        </p>
+        <p>Ciudad:
+            <?php echo $ciudad; ?>
+        </p>
+        <p>País:
+            <?php echo $pais; ?>
+        </p>
+        <form action="index.php">
+            <button type="submit">Salir</button>
+        </form>
+    </div>
+</div>
+<?php include('../templates/footer.php'); ?>

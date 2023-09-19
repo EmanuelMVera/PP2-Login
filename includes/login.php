@@ -28,3 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+<?php include('../templates/header.php'); ?>
+<div class="content">
+    <div class="main-container">
+        <h2>Iniciar sesión</h2>
+        <form action="login.php" method="POST">
+            <input type="text" name="usuario" placeholder="Usuario" required /><br />
+            <input type="password" name="contrasena" placeholder="Contraseña" required /><br />
+            <button type="submit">Ingresar</button>
+        </form>
+        <a href="registro.html">Crear usuario</a>
+    </div>
+</div>
+<?php include('../templates/footer.php'); ?>
