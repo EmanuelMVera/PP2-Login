@@ -1,13 +1,15 @@
+@import url("constantes.css");
 /* Estilos específicos de la página de usuario */
 .usuario-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: var(--color-background);
 }
 
 .perfil {
-  background-color: #333;
+  background-color: var(--color-background);
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -27,11 +29,11 @@
 h2 {
   font-size: 24px;
   margin-top: 20px;
-  color: #fff;
+  color: var(--color-heading);
 }
 
 p {
   font-size: 16px;
-  color: #ccc;
+  color: var(--color-text);
   margin: 5px 0;
 }

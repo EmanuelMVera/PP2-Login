@@ -1,5 +1,5 @@
 <?php
-session_start(); // Inicia la sesión
+session_start();
 
 // Verifica si los datos del usuario están presentes en la sesión
 if (isset($_SESSION["nombreUsuario"])) {
@@ -9,53 +9,38 @@ if (isset($_SESSION["nombreUsuario"])) {
     // Obtén los datos del usuario de la base de datos si están disponibles
     if (isset($_SESSION["usuario"])) {
         $usuario = $_SESSION["usuario"];
-
+        // Utiliza una consulta preparada para mayor seguridad
         $query = "SELECT 
                     nombre, 
                     correo, 
-                    fecha_nacimiento, 
-                    ciudad, 
-                    pais
-                  FROM login WHERE usuario = '$usuario'";
+                    fecha_nacimiento
+                  FROM login WHERE usuario = ?";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "s", $usuario);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
-        $result = mysqli_query($conn, $query);
-
-        if ($result) {
+        if ($result && mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
-            $nombreUsuario = $row['nombre'];
-            $correoUsuario = $row['correo'];
-            $fechaNacimiento = $row['fecha_nacimiento'];
-            $ciudad = $row['ciudad'];
-            $pais = $row['pais'];
+            $_SESSION["nombreUsuario"] = $row['nombre'];
+            $_SESSION["correoUsuario"] = $row['correo'];
+            $_SESSION["fechaNacimiento"] = $row['fecha_nacimiento'];
         }
     }
 
     // Valores por defecto si los datos no están en la tabla o la sesión
-    if (!isset($nombreUsuario)) {
-        $nombreUsuario = "Nombre no especificado";
-    }
+    $nombreUsuario = $_SESSION["nombreUsuario"];
+    $correoUsuario = $_SESSION["correoUsuario"];
+    $fechaNacimiento = $_SESSION["fechaNacimiento"];
 
-    if (!isset($correoUsuario)) {
-        $correoUsuario = "Correo no especificado";
-    }
+    // Cierra la conexión a la base de datos cuando hayas terminado de usarla
+    mysqli_close($conn);
 
-    if (!isset($fechaNacimiento)) {
-        $fechaNacimiento = "Fecha de nacimiento no especificada";
-    }
-
-    if (!isset($ciudad)) {
-        $ciudad = "Ciudad no especificada";
-    }
-
-    if (!isset($pais)) {
-        $pais = "País no especificado";
-    }
 } else {
     // Los datos del usuario no están en la sesión, redirige al inicio de sesión
-    header("Location: ./index.php");
+    header("Location: index.php");
     exit();
 }
-
 ?>
 
 <?php include('./templates/header.php'); ?>
@@ -70,12 +55,6 @@ if (isset($_SESSION["nombreUsuario"])) {
         </p>
         <p>Fecha de Nacimiento:
             <?php echo $fechaNacimiento; ?>
-        </p>
-        <p>Ciudad:
-            <?php echo $ciudad; ?>
-        </p>
-        <p>País:
-            <?php echo $pais; ?>
         </p>
         <form action="index.php">
             <button type="submit">Salir</button>

@@ -1,0 +1,11 @@
+/* Estilos generales */
+:root {
+  --color-background: #f0f0f0;
+  --color-text: #333;
+  --color-link: #0077b6;
+  --color-link-hover: #005d8d;
+  --color-button: #0077b6;
+  --color-button-hover: #005d8d;
+  --color-heading: #333;
+  --color-input-bg: #444;
+}

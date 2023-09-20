@@ -1,6 +1,7 @@
+@import url("constantes.css");
 /* Estilos específicos de la página de registro */
 .registro-container {
-  background-color: #fff;
+  background-color: var(--color-background);
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
@@ -9,7 +10,7 @@
 }
 
 h2 {
-  color: #333;
+  color: var(--color-heading);
   font-size: 24px;
   text-align: center;
   margin-bottom: 20px;
@@ -22,22 +23,22 @@ form input[type="password"] {
   margin: 5px 0;
   border: none;
   border-radius: 5px;
-  background-color: #444;
-  color: #fff;
+  background-color: var(--color-input-bg);
+  color: var(--color-text);
   font-size: 16px;
 }
 
 form button {
-  background-color: #0077b6;
+  background-color: var(--color-button);
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 form button:hover {
-  background-color: #005d8d;
+  background-color: var(--color-button-hover);
 }

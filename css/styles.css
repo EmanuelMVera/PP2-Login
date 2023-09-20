@@ -1,10 +1,12 @@
+@import url("constantes.css");
 /* Estilos generales */
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .header {
@@ -25,28 +27,28 @@ body {
 /* Enlaces */
 a {
   text-decoration: none;
-  color: #0077b6;
-  transition: color 0.3s ease;
+  color: var(--color-link);
+  transition: color 0.3s;
 }
 
 a:hover {
-  color: #005d8d;
+  color: var(--color-link-hover);
 }
 
 /* Botones */
 button {
-  background-color: #0077b6;
+  background-color: var(--color-button);
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #005d8d;
+  background-color: var(--color-button-hover);
 }
 
 /* Media queries y estilos responsivos para todo el sitio */
@@ -54,34 +56,5 @@ button:hover {
   /* Estilos responsivos para todo el sitio aquí */
   body {
     font-size: 16px;
-  }
-}
-
-/* Media queries y estilos específicos para estilos.css */
-@media screen and (max-width: 768px) {
-  /* Estilos responsivos para estilos.css aquí */
-}
-
-/* Media queries y estilos específicos para login.css */
-@media screen and (max-width: 768px) {
-  /* Estilos responsivos para login.css aquí */
-  .main-container {
-    max-width: 100%;
-  }
-}
-
-/* Media queries y estilos específicos para registro.css */
-@media screen and (max-width: 768px) {
-  /* Estilos responsivos para registro.css aquí */
-  .registro-container {
-    max-width: 100%;
-  }
-}
-
-/* Media queries y estilos específicos para usuario.css */
-@media screen and (max-width: 768px) {
-  /* Estilos responsivos para usuario.css aquí */
-  .perfil {
-    max-width: 300px;
   }
 }

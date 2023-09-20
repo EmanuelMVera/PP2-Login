@@ -1,42 +1,41 @@
 <?php
-include_once("includes/database.php");
+include_once("./includes/database.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = mysqli_real_escape_string($conn, $_POST["usuario"]);
-    $contrasena = $_POST["contrasena"];
+    $usuario = mysqli_real_escape_string($conn, trim($_POST["usuario"]));
+    $nombre = mysqli_real_escape_string($conn, trim($_POST["nombre"]));
+    $correo = mysqli_real_escape_string($conn, trim($_POST["correo"]));
+    $fecha_nacimiento = mysqli_real_escape_string($conn, trim($_POST["fecha_nacimiento"]));
+    $contrasena = trim($_POST["contrasena"]);
 
-    // Verificar si el usuario ya existe en la base de datos
-    $checkQuery = "SELECT usuario FROM login WHERE usuario = '$usuario'";
-    $checkResult = mysqli_query($conn, $checkQuery);
+    // Hash de la contraseña
+    $hashed_password = password_hash($contrasena, PASSWORD_DEFAULT);
 
-    if ($checkResult && mysqli_num_rows($checkResult) > 0) {
-        echo "El nombre de usuario ya está en uso. Por favor, elige otro.";
+    $query = "INSERT INTO login (usuario, password, nombre, correo, fecha_nacimiento) VALUES (?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sssss", $usuario, $hashed_password, $nombre, $correo, $fecha_nacimiento);
+
+    if (mysqli_stmt_execute($stmt)) {
+        // Registro exitoso, redirige a la página de inicio de sesión
+        header("Location: index.php");
+        exit();
     } else {
-        // Hash de la contraseña
-        $hashedPassword = password_hash($contrasena, PASSWORD_DEFAULT);
-
-        // Insertar el nuevo usuario en la base de datos
-        $insertQuery = "INSERT INTO login (usuario, password) VALUES ('$usuario', '$hashedPassword')";
-        $insertResult = mysqli_query($conn, $insertQuery);
-
-        if ($insertResult) {
-            // Registro exitoso, redirige al usuario a la página de inicio de sesión
-            header("Location: index.php");
-            exit();
-        } else {
-            echo "Error al registrar el usuario.";
-        }
+        echo "Error al registrar el usuario: " . mysqli_error($conn);
     }
 }
 ?>
 
+<!-- Formulario de registro -->
 <?php include('./templates/header.php'); ?>
 <div class="registro-container">
     <h2>Crear usuario</h2>
     <form action="registro.php" method="POST">
-        <input type="text" name="usuario" placeholder="Nuevo Usuario" required /><br />
-        <input type="password" name="contrasena" placeholder="Nueva Contraseña" required /><br />
-        <button type="submit">Registrarse</button>
+        <input type="text" name="usuario" placeholder="Usuario" required /><br />
+        <input type="text" name="nombre" placeholder="Nombre" required /><br />
+        <input type="email" name="correo" placeholder="Correo electrónico" required /><br />
+        <input type="date" name="fecha_nacimiento" required /><br />
+        <input type="password" name="contrasena" placeholder="Contraseña" required /><br />
+        <button type="submit">Registrar</button>
     </form>
     <a href="./index.php">Volver al inicio de sesión</a>
 </div>
