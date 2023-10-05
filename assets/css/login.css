@@ -1,4 +1,4 @@
-@import url("constantes.css");
+@import url("variables.css");
 /* Estilos específicos de la página de inicio de sesión */
 .main-container {
   background-color: var(--color-background);

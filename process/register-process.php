@@ -1,5 +1,5 @@
 <?php
-include_once("./includes/database.php");
+include_once("../database/database.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = mysqli_real_escape_string($conn, trim($_POST["usuario"]));
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_stmt_execute($stmt)) {
         // Registro exitoso, redirige a la página de inicio de sesión
-        header("Location: index.php");
+        header("Location: ../index.php");
         exit();
     } else {
         echo "Error al registrar el usuario: " . mysqli_error($conn);
@@ -25,18 +25,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!-- Formulario de registro -->
-<?php include('./templates/header.php'); ?>
-<div class="registro-container">
-    <h2>Crear usuario</h2>
-    <form action="registro.php" method="POST">
-        <input type="text" name="usuario" placeholder="Usuario" required /><br />
-        <input type="text" name="nombre" placeholder="Nombre" required /><br />
-        <input type="email" name="correo" placeholder="Correo electrónico" required /><br />
-        <input type="date" name="fecha_nacimiento" required /><br />
-        <input type="password" name="contrasena" placeholder="Contraseña" required /><br />
-        <button type="submit">Registrar</button>
-    </form>
-    <a href="./index.php">Volver al inicio de sesión</a>
-</div>
-<?php include('./templates/footer.php'); ?>

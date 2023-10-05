@@ -1,4 +1,4 @@
-@import url("constantes.css");
+@import url("variables.css");
 /* Estilos específicos de la página de usuario */
 .usuario-container {
   display: flex;

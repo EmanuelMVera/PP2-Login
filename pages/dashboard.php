@@ -4,7 +4,7 @@ session_start();
 // Verifica si los datos del usuario están presentes en la sesión
 if (isset($_SESSION["nombreUsuario"])) {
     // Los datos del usuario están presentes en la sesión
-    include("includes/database.php"); // Incluye la conexión a la base de datos si es necesario
+    include("../database/database.php"); // Incluye la conexión a la base de datos si es necesario
 
     // Obtén los datos del usuario de la base de datos si están disponibles
     if (isset($_SESSION["usuario"])) {
@@ -38,15 +38,14 @@ if (isset($_SESSION["nombreUsuario"])) {
 
 } else {
     // Los datos del usuario no están en la sesión, redirige al inicio de sesión
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>
 
-<?php include('./templates/header.php'); ?>
+<?php include('../includes/header.php'); ?>
 <div class="usuario-container">
     <div class="perfil">
-        <img src="avatar.png" alt="Foto de perfil">
         <h2>
             <?php echo $nombreUsuario; ?>
         </h2>
@@ -61,4 +60,4 @@ if (isset($_SESSION["nombreUsuario"])) {
         </form>
     </div>
 </div>
-<?php include('./templates/footer.php'); ?>
+<?php include('./includes/footer.php'); ?>
