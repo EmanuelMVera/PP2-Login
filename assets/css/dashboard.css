@@ -1,39 +1,56 @@
-@import url("variables.css");
-/* Estilos específicos de la página de usuario */
 .usuario-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: var(--color-background);
+}
+
+.title-dashboard{
+  color: grey;
 }
 
 .perfil {
-  background-color: var(--color-background);
+  background-color: #fff;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   text-align: left;
-  max-width: 400px;
-  width: 90%;
+  max-width: 800px;
+  width: 70%;
+  overflow: auto;
 }
 
-.perfil img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin: 0 auto;
-  display: block;
-}
-
-h2 {
-  font-size: 24px;
+table.user-table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 20px;
-  color: var(--color-heading);
 }
 
-p {
-  font-size: 16px;
-  color: var(--color-text);
-  margin: 5px 0;
+table.user-table th,
+table.user-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+table.user-table th {
+  background-color: var(--color-button-bg);
+  color: grey;
+  font-weight: bold;
+}
+
+table.user-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+table.user-table tr:nth-child(even) {
+  background-color: #ccc;
+}
+
+table.user-table a {
+  color: var(--color-button-bg);
+  text-decoration: none;
+}
+
+table.user-table a:hover {
+  text-decoration: underline;
 }

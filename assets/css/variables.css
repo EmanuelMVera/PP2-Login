@@ -1,11 +1,18 @@
-/* Estilos generales */
 :root {
   --color-background: #f0f0f0;
+  --color-linear-gradient-One: #247ba0; /* Azul oscuro */
+  --color-linear-gradient-Two: #70c1b3; /* Verde agua */
   --color-text: #333;
-  --color-link: #0077b6;
-  --color-link-hover: #005d8d;
-  --color-button: #0077b6;
-  --color-button-hover: #005d8d;
-  --color-heading: #333;
-  --color-input-bg: #444;
+  --color-text-h2: #fff;
+  --color-link: #0077b6; /* Azul enlace */
+  --color-link-hover: #005d8d; /* Azul enlace al pasar el cursor */
+  --color-button-text: #fff;
+  --color-button-text-hover: #08956e;
+  --color-button: #08956e; /* Rojo botón */
+  --color-button-hover: #fff; /* Rojo botón al pasar el cursor */
+  --color-heading: white;
+  --color-input-bg: #fff;
+  --color-error: #ff0000; /* Rojo para mensajes de error */
+  --color-container-bg: rgb(0 255 45 / 24%); /* Fondo oscuro para contenedores */
+  --color-container-text: #fff; /* Texto blanco para contenedores */
 }

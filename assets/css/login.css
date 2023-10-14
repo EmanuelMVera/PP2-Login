@@ -1,67 +1,34 @@
 @import url("variables.css");
-/* Estilos específicos de la página de inicio de sesión */
-.main-container {
-  background-color: var(--color-background);
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 400px;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-h2 {
-  color: var(--color-heading);
-  font-size: 28px;
+.main-container {
+  width: 90%;
+  max-width: 350px;
+  padding: 20px;
+  background-color: var(--color-container-bg);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
+  margin: 0 auto;
+}
+
+.tittle {
+  color: var(--color-text-h2);
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
-form {
+.main-form {
   text-align: center;
 }
 
 .form-group {
+  display: flex;
   margin-bottom: 20px;
-}
-
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: var(--color-input-bg);
-  color: var(--color-text);
-}
-
-.btn {
-  background-color: var(--color-button);
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s;
-}
-
-.btn:hover {
-  background-color: var(--color-button-hover);
-}
-
-a {
-  text-decoration: none;
-  color: var(--color-link);
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: var(--color-link-hover);
-}
-
-.error-message {
-  color: #ff0000;
-  text-align: center;
-  margin-bottom: 10px;
 }

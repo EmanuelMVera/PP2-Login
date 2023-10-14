@@ -17,9 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($contrasena, $row['password'])) {
             $_SESSION["nombreUsuario"] = $row['nombre'];
             $_SESSION["correoUsuario"] = $row['correo'];
-            $_SESSION["fechaNacimiento"] = $row['fecha_nacimiento'];
-            $_SESSION["ciudad"] = $row['ciudad'];
-            $_SESSION["pais"] = $row['pais'];
 
             header("Location: ../pages/dashboard.php");
             exit();
@@ -30,4 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Usuario no encontrado.";
     }
 }
+
+header("Location: ../pages/login.php?error=" . urlencode($error));
 ?>

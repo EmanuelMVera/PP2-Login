@@ -1,51 +1,22 @@
 @import url("variables.css");
-/* Estilos generales */
+
 body {
   font-family: "Roboto", Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background: linear-gradient(
+      to bottom,
+      var(--color-linear-gradient-One),
+      var(--color-linear-gradient-Two)
+    )
+    fixed no-repeat;
+  background-size: cover;
   transition: background-color 0.3s, color 0.3s;
-}
-/*
-####Experimento
- body {
-    background: linear-gradient(to bottom, #8e44ad, #3498db); 
-    background-attachment: fixed; 
-    background-repeat: no-repeat;
-    background-size: cover; 
-    color: #fff; 
-    font-family: Arial, sans-serif; 
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; 
-}
-*/
-
-.header {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-  font-size: 24px;
+  height: 100vh;
 }
 
-.footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-}
-
-/* Enlaces */
 a {
   text-decoration: none;
-  color: var(--color-link);
   transition: color 0.3s;
 }
 
@@ -53,26 +24,38 @@ a:hover {
   color: var(--color-link-hover);
 }
 
-/* Botones */
 button {
+  width: 100%;
   background-color: var(--color-button);
-  color: #fff;
-  padding: 10px 20px;
+  color: var(--color-button-text);
+  padding: 12px 24px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   transition: background-color 0.3s;
 }
 
 button:hover {
   background-color: var(--color-button-hover);
+  color: var(--color-button-text-hover);
 }
 
-/* Media queries y estilos responsivos para todo el sitio */
-@media screen and (max-width: 768px) {
-  /* Estilos responsivos para todo el sitio aquí */
-  body {
-    font-size: 16px;
-  }
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-input-bg);
+  color: var(--color-text);
+  font-size: 16px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.error-message {
+  color: var(--color-error);
+  text-align: center;
+  margin-bottom: 10px;
 }
