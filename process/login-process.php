@@ -27,6 +27,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Usuario no encontrado.";
     }
 }
-
-header("Location: ../pages/login.php?error=" . urlencode($error));
 ?>

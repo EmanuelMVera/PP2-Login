@@ -1,3 +1,5 @@
+@import url("variables.css");
+
 .usuario-container {
   display: flex;
   justify-content: center;
@@ -5,12 +7,12 @@
   height: 100vh;
 }
 
-.title-dashboard{
-  color: grey;
+.title-dashboard {
+  color: var(--color-text-h2);
 }
 
 .perfil {
-  background-color: #fff;
+  background-color: var(--color-container-bg);
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -34,7 +36,7 @@ table.user-table td {
 
 table.user-table th {
   background-color: var(--color-button-bg);
-  color: grey;
+  color: var(--color-text);
   font-weight: bold;
 }
 
@@ -53,4 +55,26 @@ table.user-table a {
 
 table.user-table a:hover {
   text-decoration: underline;
+}
+
+.button-delete {
+  background-color: var(--color-error); /* Color de error basado en variable */
+  color: var(--color-button-text); /* Texto en blanco */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.button-cancel {
+  background-color: var(--color-button); /* Basado en la variable de botón */
+  color: var(--color-button-text); /* Texto en blanco */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
 }

@@ -15,12 +15,12 @@ if (isset($_SESSION["nombreUsuario"])) {
             $nombreUsuario = $row['nombre'];
             $correoUsuario = $row['correo'];
 
-            // Mostrar cada usuario en una fila de la tabla
+            // Mostrar cada usuario en una fila de la tabla con un enlace de Editar
             echo "<tr>";
             echo "<td>$idUsuario</td>";
-            echo "<td>$nombreUsuario</td>";
-            echo "<td>$correoUsuario</td>";
-            echo "<td><a href='editar.php?id=$idUsuario'>Editar</a> | <a href='eliminar.php?id=$idUsuario'>Eliminar</a></td>";
+            echo "<td contenteditable='true'>$nombreUsuario</td>";
+            echo "<td contenteditable='true'>$correoUsuario</td>";
+            echo "<td><a href='../pages/editar.php?id=$idUsuario'>Editar</a> | <a href='../pages/delete.php?id=$idUsuario'>Eliminar</a></td>";
             echo "</tr>";
         }
     }
