@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_bind_param($stmt, "ssi", $editedName, $editedEmail, $userId);
 
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: ../pages/dashboard.php?mensaje=Usuario actualizado con éxito");
+        header("Location: ../views/dashboard.php?mensaje=Usuario actualizado con éxito");
         exit();
     } else {
         echo "Error al actualizar el usuario: " . mysqli_error($conn);

@@ -1,80 +1,79 @@
-@import url("variables.css");
+.mainContainer {
+  display: flex;
+  width: 100%;
+  min-height: 100vh; /* Cambiado para evitar desbordamientos */
+  background: linear-gradient(to right, #0077b6, #0099c3);
+}
+
+.perfil { /* Corregir el nombre de la clase */
+  width: 100%;
+}
 
 .usuario-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-}
-
-.title-dashboard {
-  color: var(--color-text-h2);
-}
-
-.perfil {
-  background-color: var(--color-container-bg);
+  background: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  width: 90%; /* Aumentado el ancho */
+  margin: 5% auto;
   padding: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  text-align: left;
-  max-width: 800px;
-  width: 70%;
-  overflow: auto;
 }
 
-table.user-table {
+.leftTitle {
+  color: #0077b6;
+  font-size: 2rem;
+  text-align: left;
+}
+
+.user-table {
   width: 100%;
   border-collapse: collapse;
+  margin: 20px 0;
+  table-layout: fixed; /* Añadido para mejorar el espacio */
+}
+
+.user-table th, .user-table td {
+  border: 1px solid #0077b6;
+  padding: 12px; /* Aumentado el relleno */
+  text-align: center;
+}
+
+.user-table th {
+  background: #0099c3;
+  color: #fff;
+}
+
+/* Cambiar colores de los íconos */
+.user-table a {
+  color: #0077b6; /* Color de los íconos en estado normal */
+  transition: color 0.3s;
+}
+
+.user-table a:hover {
+  color: #ff0000; /* Cambiar a rojo en el estado hover (eliminar) */
+}
+
+/* Cambiar color del ícono de editar */
+.user-table a:hover .fas.fa-edit {
+  color: #00ff00; /* Cambiar a verde en el estado hover (editar) */
+}
+
+
+.btn {
+  background-color: #0099c3;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
   margin-top: 20px;
-}
-
-table.user-table th,
-table.user-table td {
-  padding: 10px;
-  text-align: left;
-}
-
-table.user-table th {
-  background-color: var(--color-button-bg);
-  color: var(--color-text);
-  font-weight: bold;
-}
-
-table.user-table tr:nth-child(odd) {
-  background-color: #f2f2f2;
-}
-
-table.user-table tr:nth-child(even) {
-  background-color: #ccc;
-}
-
-table.user-table a {
-  color: var(--color-button-bg);
-  text-decoration: none;
-}
-
-table.user-table a:hover {
-  text-decoration: underline;
-}
-
-.button-delete {
-  background-color: var(--color-error); /* Color de error basado en variable */
-  color: var(--color-button-text); /* Texto en blanco */
-  padding: 10px 20px;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  text-decoration: none;
-  margin-right: 10px;
+  font-size: 18px;
+  transition: background-color 0.3s;
 }
-.button-cancel {
-  background-color: var(--color-button); /* Basado en la variable de botón */
-  color: var(--color-button-text); /* Texto en blanco */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  text-decoration: none;
+
+.btn:hover {
+  background-color: #0077b6;
 }

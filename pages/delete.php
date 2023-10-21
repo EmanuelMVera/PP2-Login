@@ -9,7 +9,7 @@ include('../includes/header.php');
             $userId = $_GET["id"];
             echo '<p>¿Estás seguro de que deseas eliminar este usuario?</p>';
             echo '<a href="../process/delete-user-process.php?id=' . $userId . '" class="button-delete">Eliminar</a>';
-            echo '<a href="../pages/dashboard.php" class="button-cancel">Cancelar</a>';
+            echo '<a href="../views/dashboard.php" class="button-cancel">Cancelar</a>';
         } else {
             echo "ID de usuario no válido.";
         }

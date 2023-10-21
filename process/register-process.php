@@ -1,17 +1,18 @@
 <?php
 include_once("../database/database.php");
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = mysqli_real_escape_string($conn, trim($_POST["usuario"])); // Cambiado de "user" a "usuario"
+    $usuario = mysqli_real_escape_string($conn, trim($_POST["usuario"]));
     $nombre = mysqli_real_escape_string($conn, trim($_POST["nombre"]));
     $correo = mysqli_real_escape_string($conn, trim($_POST["correo"]));
-    $contrasena = password_hash(trim($_POST["contrasena"]), PASSWORD_DEFAULT); // Cambiado de "password" a "contrasena"
+    $contrasena = password_hash(trim($_POST["contrasena"]), PASSWORD_DEFAULT);
 
     // Validación de datos
+    $error = false;
+
     if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        $error = "Formato de correo electrónico no válido";
-        header("Location: ../pages/login.php?error=" . urlencode($error));
-        exit();
+        $error = true;
     }
 
     // Verificar si el usuario ya existe
@@ -22,8 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_stmt_get_result($stmt);
 
     if ($result && mysqli_num_rows($result) > 0) {
-        $error = "El usuario ya existe. Por favor, elige otro nombre de usuario.";
-        header("Location: ../pages/login.php?error=" . urlencode($error));
+        $error = true;
+    }
+
+    if ($error) {
+        // Marcar los campos con error
+        $_SESSION["registerError"] = true;
+        header("Location: ../pages/login.php");
         exit();
     }
 
@@ -34,13 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_stmt_execute($stmt)) {
         // Registro exitoso, redirige a la página de inicio de sesión con mensaje
-        header("Location: ../pages/login.php?registro=exitoso");
-        exit();
-    } else {
-        // Error al registrar el usuario
-        $error = "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
-        header("Location: ../pages/login.php?error=" . urlencode($error));
+        $_SESSION["registrationSuccess"] = true;
+        header("Location: ../pages/login.php");
         exit();
     }
 }
-?>

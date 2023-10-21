@@ -18,13 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["nombreUsuario"] = $row['nombre'];
             $_SESSION["correoUsuario"] = $row['correo'];
 
-            header("Location: ../pages/dashboard.php");
+            header("Location: ../views/dashboard.php");
             exit();
-        } else {
-            $error = "Contraseña incorrecta.";
         }
-    } else {
-        $error = "Usuario no encontrado.";
     }
+
+    // Si llegamos aquí, hay un error en el inicio de sesión
+    $_SESSION["loginError"] = true;
+    header("Location: ../pages/login.php");
 }
 ?>
