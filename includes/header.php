@@ -14,7 +14,12 @@
     echo '<link rel="stylesheet" href="../assets/css/login-styles.css">';
   } elseif ($pageName === 'dashboard.php') {
     echo '<link rel="stylesheet" href="../assets/css/dashboard.css">';
+  } elseif ($pageName === 'editar.php') {
+    echo '<link rel="stylesheet" href="../assets/css/update.css">';
+  } elseif ($pageName === 'delete.php') {
+    echo '<link rel="stylesheet" href="../assets/css/delete.css">';
   }
+
   ?>
   <title>PP2</title>
 </head>

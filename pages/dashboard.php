@@ -1,4 +1,3 @@
-<!-- dashboard.php -->
 <?php include('../includes/header.php'); ?>
 
 <div class="mainContainer">
@@ -10,12 +9,15 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
+                        <th>Apellido</th>
                         <th>Correo Electrónico</th>
+                        <th>Teléfono</th>
+                        <th>Fecha de Creación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php include('../controllers/dashboard-controller.php'); ?>
+                    <?php include('../process/dashboard-process.php'); ?>
                 </tbody>
             </table>
             <form action="../process/logout-process.php" method="post">

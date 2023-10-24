@@ -3,8 +3,9 @@ include_once("../database/database.php");
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = mysqli_real_escape_string($conn, trim($_POST["usuario"]));
     $nombre = mysqli_real_escape_string($conn, trim($_POST["nombre"]));
+    $apellido = mysqli_real_escape_string($conn, trim($_POST["apellido"]));
+    $telefono = mysqli_real_escape_string($conn, trim($_POST["telefono"]));
     $correo = mysqli_real_escape_string($conn, trim($_POST["correo"]));
     $contrasena = password_hash(trim($_POST["contrasena"]), PASSWORD_DEFAULT);
 
@@ -15,10 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = true;
     }
 
-    // Verificar si el usuario ya existe
-    $query = "SELECT id FROM login WHERE usuario = ?";
+    // Verificar si el correo ya está registrado
+    $query = "SELECT id FROM usuarios WHERE mail = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "s", $usuario);
+    mysqli_stmt_bind_param($stmt, "s", $correo);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
@@ -34,9 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Inserción de usuario
-    $query = "INSERT INTO login (usuario, password, nombre, correo) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO usuarios (nombre, apellido, telefono, mail, contrasena) VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ssss", $usuario, $contrasena, $nombre, $correo);
+    mysqli_stmt_bind_param($stmt, "sssss", $nombre, $apellido, $telefono, $correo, $contrasena);
 
     if (mysqli_stmt_execute($stmt)) {
         // Registro exitoso, redirige a la página de inicio de sesión con mensaje

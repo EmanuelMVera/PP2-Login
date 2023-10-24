@@ -1,0 +1,63 @@
+.mainContainer {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to right, #0077b6, #0099c3);
+}
+
+.perfil {
+    width: 100%;
+}
+
+.usuario-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 90%;
+    margin: 5% auto;
+    padding: 20px;
+}
+
+.leftTitle {
+    color: #0077b6;
+    font-size: 2rem;
+    text-align: left;
+}
+
+.button-delete {
+    background-color: #ff0000; /* Rojo para botón de eliminar */
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.button-delete:hover {
+    background-color: #dd0000; /* Cambio de color al pasar el cursor */
+}
+
+.button-cancel {
+    background-color: #0099c3; /* Color original para botón de cancelar */
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.button-cancel:hover {
+    background-color: #0077b6; /* Cambio de color al pasar el cursor */
+}

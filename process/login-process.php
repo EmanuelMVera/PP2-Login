@@ -3,22 +3,26 @@ include_once("../database/database.php");
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = mysqli_real_escape_string($conn, trim($_POST["user"]));
+    $mail = mysqli_real_escape_string($conn, trim($_POST["user"]));
     $contrasena = trim($_POST["password"]);
 
-    $query = "SELECT * FROM login WHERE usuario = ?";
+    $query = "SELECT * FROM usuarios WHERE mail = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "s", $usuario);
+    mysqli_stmt_bind_param($stmt, "s", $mail);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
     if ($result && mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
-        if (password_verify($contrasena, $row['password'])) {
+        if (password_verify($contrasena, $row['contrasena'])) {
+            // Almacenar los datos del usuario en la sesión
+            $_SESSION["idUsuario"] = $row['id'];
             $_SESSION["nombreUsuario"] = $row['nombre'];
-            $_SESSION["correoUsuario"] = $row['correo'];
+            $_SESSION["apellidoUsuario"] = $row['apellido'];
+            $_SESSION["telefonoUsuario"] = $row['telefono'];
+            $_SESSION["correoUsuario"] = $row['mail'];
 
-            header("Location: ../views/dashboard.php");
+            header("Location: ../pages/dashboard.php");
             exit();
         }
     }
