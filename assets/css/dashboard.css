@@ -1,11 +1,59 @@
-.mainContainer {
-  display: flex;
-  width: 100%;
-  min-height: 100vh; /* Cambiado para evitar desbordamientos */
-  background: linear-gradient(to right, #0077b6, #0099c3);
+/* Estilos generales que se aplican a todas las páginas */
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 
-.perfil { /* Corregir el nombre de la clase */
+.error-message {
+  color: var(--color-error);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Estilos del contenedor principal */
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #0077b6, #0099c3);
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Estilos del menú-container */
+.menu-container {
+  background: #0099c3;
+  padding: 10px 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilos del menú y enlaces */
+.menu ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.menu li {
+  margin-right: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Estilos de la tabla y otros elementos */
+.perfil {
   width: 100%;
 }
 
@@ -15,10 +63,10 @@
   justify-content: center;
   align-items: center;
   background: #ffffff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  width: 90%; /* Aumentado el ancho */
-  margin: 5% auto;
+  box-shadow: 12px 14px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  width: 95%;
+  margin: 2% auto;
   padding: 20px;
 }
 
@@ -32,12 +80,13 @@
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  table-layout: fixed; /* Añadido para mejorar el espacio */
+  table-layout: fixed;
 }
 
-.user-table th, .user-table td {
+.user-table th,
+.user-table td {
   border: 1px solid #0077b6;
-  padding: 12px; /* Aumentado el relleno */
+  padding: 12px;
   text-align: center;
 }
 
@@ -46,21 +95,18 @@
   color: #fff;
 }
 
-/* Cambiar colores de los íconos */
 .user-table a {
-  color: #0077b6; /* Color de los íconos en estado normal */
+  color: #0077b6;
   transition: color 0.3s;
 }
 
 .user-table a:hover {
-  color: #ff0000; /* Cambiar a rojo en el estado hover (eliminar) */
+  color: #ff0000;
 }
 
-/* Cambiar color del ícono de editar */
 .user-table a:hover .fas.fa-edit {
-  color: #00ff00; /* Cambiar a verde en el estado hover (editar) */
+  color: #00ff00;
 }
-
 
 .btn {
   background-color: #0099c3;

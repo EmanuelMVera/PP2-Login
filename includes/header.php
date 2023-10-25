@@ -14,6 +14,7 @@
     echo '<link rel="stylesheet" href="../assets/css/login-styles.css">';
   } elseif ($pageName === 'dashboard.php') {
     echo '<link rel="stylesheet" href="../assets/css/dashboard.css">';
+    echo '<link rel="stylesheet" href="../assets/css/menu.css">';
   } elseif ($pageName === 'editar.php') {
     echo '<link rel="stylesheet" href="../assets/css/update.css">';
   } elseif ($pageName === 'delete.php') {

@@ -1,6 +1,8 @@
 <?php include('../includes/header.php'); ?>
-
 <div class="mainContainer">
+    <div class="menu-container">
+        <?php include('../includes/menu.php'); ?>
+    </div>
     <div class="usuario-container">
         <div class="perfil">
             <h2 class="leftTitle">Lista de Usuarios</h2>

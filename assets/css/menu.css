@@ -1,0 +1,68 @@
+.menu-container {
+    display: flex;
+    padding: 10px;
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-container form {
+    display: flex;
+    align-items: center;
+}
+
+.menu-container label {
+    margin-right: 10px;
+}
+.menu-container #sort{
+    margin-right: 30px;
+    padding: 10px;
+}
+
+/* Estilos para los inputs de fecha */
+.menu-container input[type="date"] {
+    margin-right: 30px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #0099c3;
+    border-radius: 5px;
+    outline: none;
+}
+
+.menu-container input[type="date"]:focus {
+    border-color: #0077b6;
+}
+
+.menu-container button {
+    padding: 10px;
+    background-color: #0099c3;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.menu-container button:hover {
+    background-color: #0077b6;
+}
+
+/* .pdf-link {
+    text-decoration: none;
+    display: inline-block;
+    background-color: #0099c3;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .pdf-link:hover {
+    background-color: #0077b6;
+  } */
+  
