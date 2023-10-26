@@ -11,7 +11,7 @@
   <?php
   $pageName = basename($_SERVER['PHP_SELF']);
   if ($pageName === 'index.php') {
-    echo '<link rel="stylesheet" href="../assets/css/login-styles.css">';
+    echo '<link rel="stylesheet" href="../assets/css/index.css">';
   } elseif ($pageName === 'dashboard.php') {
     echo '<link rel="stylesheet" href="../assets/css/dashboard.css">';
     echo '<link rel="stylesheet" href="../assets/css/menu.css">';

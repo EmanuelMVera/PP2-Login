@@ -24,11 +24,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             header("Location: ../pages/dashboard.php");
             exit();
+        } else {
+            // Contraseña incorrecta
+            $_SESSION["loginErrorPass"] = "La contraseña ingresada es incorrecta.";
+            header("Location: ../index.php");
+            exit();
         }
+    } else {
+        // Usuario no existe
+        $_SESSION["loginErrorUser"] = "El usuario ingresado no existe.";
+        header("Location: ../index.php");
+        exit();
     }
-
-    // Si llegamos aquí, hay un error en el inicio de sesión
-    $_SESSION["loginError"] = true;
-    header("Location: ../index.php");
 }
 ?>
