@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($error) {
         // Marcar los campos con error
         $_SESSION["registerError"] = true;
-        header("Location: ../pages/login.php");
+        header("Location: ../index.php");
         exit();
     }
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_stmt_execute($stmt)) {
         // Registro exitoso, redirige a la página de inicio de sesión con mensaje
         $_SESSION["registrationSuccess"] = true;
-        header("Location: ../pages/login.php");
+        header("Location: ../index.php");
         exit();
     }
 }

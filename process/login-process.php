@@ -29,6 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Si llegamos aquí, hay un error en el inicio de sesión
     $_SESSION["loginError"] = true;
-    header("Location: ../pages/login.php");
+    header("Location: ../index.php");
 }
 ?>

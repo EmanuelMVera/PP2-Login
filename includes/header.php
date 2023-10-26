@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <?php
   $pageName = basename($_SERVER['PHP_SELF']);
-  if ($pageName === 'login.php') {
+  if ($pageName === 'index.php') {
     echo '<link rel="stylesheet" href="../assets/css/login-styles.css">';
   } elseif ($pageName === 'dashboard.php') {
     echo '<link rel="stylesheet" href="../assets/css/dashboard.css">';

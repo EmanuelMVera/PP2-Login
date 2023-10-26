@@ -7,6 +7,7 @@ $sortColumn = "nombre";
 $fromDate = "";
 $toDate = "";
 
+$sortColumn = "nombre"; // Valor por defecto
 if (isset($_GET["sort"])) {
     $sortColumn = $_GET["sort"];
 }
@@ -41,6 +42,8 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 if ($result && mysqli_num_rows($result) > 0) {
+    $filteredData = array(); // Almacena los datos filtrados
+
     while ($row = mysqli_fetch_assoc($result)) {
         // Mostrar cada usuario en una fila de la tabla
         $idUsuario = $row['id'];
@@ -49,6 +52,16 @@ if ($result && mysqli_num_rows($result) > 0) {
         $correoUsuario = $row['mail'];
         $telefonoUsuario = $row['telefono'];
         $fechaCreacion = $row['fecha_creacion_formato'];
+
+        // Agregar los datos a la matriz de datos filtrados
+        $filteredData[] = array(
+            'id' => $idUsuario,
+            'nombre' => $nombreUsuario,
+            'apellido' => $apellidoUsuario,
+            'mail' => $correoUsuario,
+            'telefono' => $telefonoUsuario,
+            'fecha_creacion_formato' => $fechaCreacion
+        );
 
         // Mostrar cada usuario en una fila de la tabla con un enlace de Editar
         echo "<tr>";
@@ -61,6 +74,12 @@ if ($result && mysqli_num_rows($result) > 0) {
         echo "<td><a href='../pages/editar.php?id=$idUsuario'><i class='fas fa-edit'></i></a> | <a href='../pages/delete.php?id=$idUsuario'><i class='fas fa-trash'></i></a></td>";
         echo "</tr>";
     }
+
+    // Almacena los datos filtrados y la configuración de ordenamiento en la variable de sesión
+    $_SESSION['filteredData'] = $filteredData;
+    $_SESSION['sortColumn'] = $sortColumn;
+    $_SESSION['fromDate'] = $fromDate;
+    $_SESSION['toDate'] = $toDate;
 }
 
 // Cierra la conexión a la base de datos cuando hayas terminado de usarla
