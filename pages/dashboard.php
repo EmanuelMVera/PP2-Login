@@ -13,7 +13,6 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Correo Electrónico</th>
-                        <th>Teléfono</th>
                         <th>Fecha de Creación</th>
                         <th>Acciones</th>
                     </tr>

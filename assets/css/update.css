@@ -54,3 +54,25 @@
 .btn:hover {
     background-color: #0077b6;
 }
+.seccionSuperiro{
+    width: 90%;
+}
+.seccionInferior{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+p {
+    width: 50%;
+    height: 5px;
+    margin: 0;
+    margin-bottom: 40px;
+    font-style: italic;
+    text-align: center;
+  }
+  .errorBox {
+    color: #ff9b00;
+  }
+  .success-text {
+    color: rgb(12, 232, 12);
+  }

@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["idUsuario"] = $row['id'];
             $_SESSION["nombreUsuario"] = $row['nombre'];
             $_SESSION["apellidoUsuario"] = $row['apellido'];
-            $_SESSION["telefonoUsuario"] = $row['telefono'];
             $_SESSION["correoUsuario"] = $row['mail'];
 
             header("Location: ../pages/dashboard.php");

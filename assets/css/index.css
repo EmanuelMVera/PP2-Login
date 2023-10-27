@@ -2,65 +2,68 @@
   display: flex;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(to right, #0077b6, #0099c3);
 }
-
+form {
+  display: contents;
+}
 /* Sección Izquierda */
 .leftPage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-end;
   width: 50%;
-  background: #0099c3;
+  background: #003949;
 }
 
 .leftTitle {
   color: #ffffff;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: right;
   padding-right: 5px;
 }
 
 .loginContainer {
+  padding: 10px;
   width: 80%;
   height: 60%;
   background: #ffffff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 5px 0px 0px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 /* Sección Derecha */
 .rightPage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   width: 50%;
   background: #ffffff;
 }
 
 .rightTitle {
-  color: #0077b6;
-  font-size: 3rem;
+  color: #003949;
+  font-size: 2.5rem;
   text-align: left;
   padding-left: 5px;
 }
 
 .registerContainer {
+  padding: 10px;
   width: 80%;
   height: 60%;
-  background: #0077b6;
+  background: #003949;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 5px 5px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .form-group {
@@ -95,41 +98,17 @@ button.btn:hover {
   background-color: #0077b6;
 }
 
-input.error {
-  border: 1px solid red;
+p {
+  width: 100%;
+  height: 5px;
+  margin: 0;
+  margin-bottom: 40px;
+  font-style: italic;
+  text-align: center;
 }
-
 .errorBox {
-  width: 50px;
-  height: 10px;
+  color: #ff9b00;
 }
-
-/* Dispositivos móviles pequeños (portrait) */
-@media (max-width: 575px) {
-  /* Estilos para pantallas pequeñas en posición vertical */
-}
-
-/* Dispositivos móviles pequeños (landscape) */
-@media (min-width: 576px) and (max-width: 767px) {
-  /* Estilos para pantallas pequeñas en posición horizontal */
-}
-
-/* Tabletas */
-@media (min-width: 768px) and (max-width: 1023px) {
-  /* Estilos para tabletas */
-}
-
-/* Pantallas pequeñas de escritorio */
-@media (min-width: 1024px) and (max-width: 1279px) {
-  /* Estilos para pantallas pequeñas de escritorio */
-}
-
-/* Pantallas medianas de escritorio */
-@media (min-width: 1280px) and (max-width: 1439px) {
-  /* Estilos para pantallas medianas de escritorio */
-}
-
-/* Pantallas grandes de escritorio */
-@media (min-width: 1440px) {
-  /* Estilos para pantallas grandes de escritorio y superiores */
+.success-text {
+  color: rgb(12, 232, 12);
 }

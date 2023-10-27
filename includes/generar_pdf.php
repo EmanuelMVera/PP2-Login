@@ -27,7 +27,6 @@ $html = '
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Correo Electrónico</th>
-    <th>Teléfono</th>
     <th>Fecha de Creación</th>
 </tr>';
 
@@ -37,7 +36,6 @@ foreach ($filteredData as $row) {
     $html .= '<td>' . $row['nombre'] . '</td>';
     $html .= '<td>' . $row['apellido'] . '</td>';
     $html .= '<td>' . $row['mail'] . '</td>';
-    $html .= '<td>' . $row['telefono'] . '</td>';
     $html .= '<td>' . $row['fecha_creacion_formato'] . '</td>';
     $html .= '</tr>';
 }

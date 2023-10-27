@@ -1,12 +1,12 @@
 <?php
 include_once("../database/database.php");
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userId = $_POST["userId"];
     $editedName = mysqli_real_escape_string($conn, $_POST["editedName"]);
     $editedApellido = mysqli_real_escape_string($conn, $_POST["editedApellido"]);
     $editedEmail = mysqli_real_escape_string($conn, $_POST["editedEmail"]);
-    $editedTelefono = mysqli_real_escape_string($conn, $_POST["editedTelefono"]);
 
     // Verificar si se ingresó una nueva contraseña
     $editedPassword = $_POST["editedPassword"];
@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // La contraseña ha sido actualizada, genera su hash
             $editedPassword = password_hash($editedPassword, PASSWORD_DEFAULT);
         } else {
-            echo "Las contraseñas no coinciden";
+            $_SESSION["error_message"] = "Las contraseñas no coinciden";
+            header("Location: ../pages/editar.php?id=$userId");
             exit();
         }
     }
@@ -30,14 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_stmt_get_result($stmt);
 
     if ($result && mysqli_num_rows($result) > 0) {
-        echo "El correo electrónico ya está en uso.";
+        $_SESSION["error_message"] = "El correo electrónico ya está en uso.";
+        header("Location: ../pages/editar.php?id=$userId");
         exit();
     }
 
     // Actualiza los datos en la base de datos
-    $query = "UPDATE usuarios SET nombre = ?, apellido = ?, mail = ?, telefono = ?";
-    $paramTypes = "sssi";
-    $paramValues = array($editedName, $editedApellido, $editedEmail, $editedTelefono);
+    $query = "UPDATE usuarios SET nombre = ?, apellido = ?, mail = ?";
+    $paramTypes = "sss";
+    $paramValues = array($editedName, $editedApellido, $editedEmail);
 
     // Agregar la contraseña si se proporcionó una nueva
     if (!empty($editedPassword)) {
@@ -53,13 +55,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = mysqli_prepare($conn, $query);
 
     // Use call_user_func_array para vincular los parámetros dinámicamente
-    mysqli_stmt_bind_param($stmt, $paramTypes, ...$paramValues);
+    $bindParams = array_merge(array($stmt, $paramTypes), $paramValues);
+    call_user_func_array('mysqli_stmt_bind_param', $bindParams);
 
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: ../pages/dashboard.php?mensaje=Usuario actualizado con éxito");
+        $mensaje = "Usuario actualizado con éxito";
+        header("Location: ../pages/editar.php?id=$userId&mensaje=$mensaje");
         exit();
     } else {
-        echo "Error al actualizar el usuario: " . mysqli_error($conn);
+        $_SESSION["error_message"] = "Error al actualizar el usuario: " . mysqli_error($conn);
+        header("Location: ../pages/editar.php?id=$userId");
+        exit();
     }
 }
-?>

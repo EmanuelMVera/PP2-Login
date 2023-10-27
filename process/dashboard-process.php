@@ -3,11 +3,11 @@ session_start();
 include("../database/database.php");
 
 // Variables para ordenar y filtrar
-$sortColumn = "nombre";
+$sortColumn = "fecha_creacion";
 $fromDate = "";
 $toDate = "";
 
-$sortColumn = "nombre"; // Valor por defecto
+$sortColumn = "fecha_creacion"; // Valor por defecto
 if (isset($_GET["sort"])) {
     $sortColumn = $_GET["sort"];
 }
@@ -21,7 +21,7 @@ if (isset($_GET["to-date"])) {
 }
 
 // Obtener todos los usuarios de la base de datos con orden y filtro
-$query = "SELECT id, nombre, apellido, mail, telefono, DATE_FORMAT(fecha_creacion, '%d/%m/%Y %H:%i:%s') AS fecha_creacion_formato 
+$query = "SELECT id, nombre, apellido, mail, DATE_FORMAT(fecha_creacion, '%d/%m/%Y %H:%i:%s') AS fecha_creacion_formato 
           FROM usuarios ";
 
 // Verifica si se han establecido fechas para aplicar el filtro
@@ -50,7 +50,6 @@ if ($result && mysqli_num_rows($result) > 0) {
         $nombreUsuario = $row['nombre'];
         $apellidoUsuario = $row['apellido'];
         $correoUsuario = $row['mail'];
-        $telefonoUsuario = $row['telefono'];
         $fechaCreacion = $row['fecha_creacion_formato'];
 
         // Agregar los datos a la matriz de datos filtrados
@@ -59,7 +58,6 @@ if ($result && mysqli_num_rows($result) > 0) {
             'nombre' => $nombreUsuario,
             'apellido' => $apellidoUsuario,
             'mail' => $correoUsuario,
-            'telefono' => $telefonoUsuario,
             'fecha_creacion_formato' => $fechaCreacion
         );
 
@@ -69,7 +67,6 @@ if ($result && mysqli_num_rows($result) > 0) {
         echo "<td contenteditable='true'>$nombreUsuario</td>";
         echo "<td contenteditable='true'>$apellidoUsuario</td>";
         echo "<td contenteditable='true'>$correoUsuario</td>";
-        echo "<td contenteditable='true'>$telefonoUsuario</td>";
         echo "<td>$fechaCreacion</td>";
         echo "<td><a href='../pages/editar.php?id=$idUsuario'><i class='fas fa-edit'></i></a> | <a href='../pages/delete.php?id=$idUsuario'><i class='fas fa-trash'></i></a></td>";
         echo "</tr>";
